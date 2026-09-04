@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#59c7c2">
+  <meta name="description" content="予算と欲しい優待の種類から株主優待銘柄を探せる、初心者向け情報提供アプリです。">
+  <title>株主優待かんたん検索</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <button class="brand" type="button" data-action="home" aria-label="トップへ戻る">
+      <span class="brand-icon" aria-hidden="true">優</span>
+      <span>株主優待<br><b>かんたん検索</b></span>
+    </button>
+    <button class="favorites-link" type="button" data-action="favorites" aria-label="気になる優待を見る">
+      <span aria-hidden="true">♡</span><span class="favorites-label">気になる優待</span><b id="favoriteCount">0</b>
+    </button>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <section class="screen active" id="priceScreen" aria-labelledby="priceTitle">
+      <div class="hero-decoration" aria-hidden="true"><span>¥</span><i></i><i></i></div>
+      <div class="screen-inner welcome">
+        <p class="eyebrow">SHAREHOLDER BENEFITS</p>
+        <h1>株主優待<br><em>かんたん検索</em></h1>
+        <p class="subtitle">予算と欲しい優待から<br class="mobile-only">探してみよう♪</p>
+        <div class="step-heading">
+          <span>STEP <b>1</b></span>
+          <div><h2 id="priceTitle">1株あたりの価格は<br class="mobile-only">どのくらい？</h2><p>近いものをひとつ選んでください</p></div>
+        </div>
+        <div class="choice-grid price-grid" id="priceChoices"></div>
+        <p class="gentle-note">株主優待をきっかけに、<br class="mobile-only">楽しく企業を知ってみよう♪</p>
+      </div>
+    </section>
+
+    <section class="screen" id="categoryScreen" aria-labelledby="categoryTitle" hidden>
+      <div class="screen-inner compact">
+        <button class="text-back" type="button" data-action="back-price">← 価格を選び直す</button>
+        <div class="progress" aria-label="2ステップ中2ステップ目"><i></i><i class="on"></i></div>
+        <div class="step-heading centered">
+          <span>STEP <b>2</b></span>
+          <div><h2 id="categoryTitle">どんな株主優待が欲しい？</h2><p id="selectedPriceText"></p></div>
+        </div>
+        <div class="choice-grid category-grid" id="categoryChoices"></div>
+        <aside class="mini-guide"><span aria-hidden="true">💡</span><p><b>むずかしく考えなくて大丈夫</b><br>気になるものを選ぶだけで、条件に近い企業を表示します。</p></aside>
+      </div>
+    </section>
+
+    <section class="screen" id="resultsScreen" aria-labelledby="resultsTitle" hidden>
+      <div class="results-hero">
+        <div class="screen-inner compact">
+          <p class="eyebrow">SEARCH RESULTS</p>
+          <h2 id="resultsTitle">条件に近い株主優待</h2>
+          <div class="condition-chips" id="conditionChips"></div>
+          <p class="market-note"><span aria-hidden="true">↗</span><b>株価は変動します。</b>表示金額は目安です。</p>
+          <p class="updated" id="updatedDate"></p>
+        </div>
+      </div>
+      <div class="screen-inner compact results-body">
+        <p class="result-count" id="resultCount"></p>
+        <div class="cards" id="resultCards" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden><span>🔎</span><h3>該当するサンプルがありませんでした</h3><p>条件を変えて、もう一度探してみてください。</p></div>
+
+        <aside class="open-chat-cta" aria-labelledby="openChatTitle">
+          <p class="open-chat-lead" id="openChatTitle">もっと「お金・節約・株主優待」の情報を知りたい方へ🌱</p>
+          <p class="open-chat-copy">マネーアドバイザー美香の<br>オープンチャットで最新情報をお届けしています。</p>
+          <a class="open-chat-button" href="https://line.me/ti/g2/G6a7e1zqDhCXhE82QJnI8MFO4154lVXbB_021g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer">無料オープンチャットに参加する</a>
+        </aside>
+
+        <button class="primary-button" type="button" data-action="home">条件を変えて探す</button>
+        <aside class="disclaimer"><span aria-hidden="true">ⓘ</span><p>※最新の情報を得るようにしていますが、株価や株主優待の内容・条件は変更される場合があります。こちらの情報を参考に、気になる銘柄については企業公式サイトや証券会社などで最新情報をご自身でも確認してください。</p></aside>
+        <p class="purpose">本アプリは株主優待を探すための情報提供を目的としており、投資の勧誘を目的とするものではありません。</p>
+      </div>
+    </section>
+
+    <section class="screen" id="favoritesScreen" aria-labelledby="favoritesTitle" hidden>
+      <div class="results-hero favorites-hero"><div class="screen-inner compact"><button class="text-back light" type="button" data-action="back-from-favorites">← 前の画面へ</button><p class="eyebrow">MY FAVORITES</p><h2 id="favoritesTitle"><span aria-hidden="true">♡</span> 気になる優待</h2><p>あとで確認したい企業を、端末内に保存しています。</p></div></div>
+      <div class="screen-inner compact results-body"><div class="cards" id="favoriteCards"></div><div class="empty-state" id="favoriteEmpty" hidden><span>♡</span><h3>まだ保存されていません</h3><p>検索結果の「♡ 気になる」を押すと、ここでいつでも見返せます。</p><button class="primary-button" type="button" data-action="home">優待を探してみる</button></div></div>
+    </section>
+  </main>
+
+  <footer><p>株主優待かんたん検索</p><small>© 2026 株主優待かんたん検索</small></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
