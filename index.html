@@ -8,6 +8,21 @@
   <title>株主優待かんたん検索</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <style>
+    .mika-promo{margin:34px 0 0;padding:24px;border:1px solid #bfe4e1;border-radius:26px;background:linear-gradient(145deg,#fff 15%,#e9f9f7 100%);box-shadow:0 12px 35px rgba(27,97,94,.11)}
+    .mika-promo-top{display:flex;gap:18px;align-items:center}
+    .mika-photo{width:118px;height:118px;flex:0 0 118px;border-radius:50%;object-fit:cover;object-position:center;border:5px solid #fff;box-shadow:0 8px 22px rgba(24,139,135,.2)}
+    .mika-bubble{position:relative;flex:1;background:#fff;border:2px solid #c9ece9;border-radius:22px;padding:18px 20px;text-align:left}
+    .mika-bubble:before{content:"";position:absolute;left:-13px;top:42px;width:22px;height:22px;background:#fff;border-left:2px solid #c9ece9;border-bottom:2px solid #c9ece9;transform:rotate(45deg)}
+    .mika-title{margin:0 0 10px;color:#213f43;font-size:1.35rem;font-weight:800;line-height:1.5}
+    .mika-copy{margin:0;color:#30464a;font-size:1.05rem;line-height:1.75}
+    .mika-name{display:block;margin-top:10px;color:#188b87;font-size:1.05rem;font-weight:800}
+    .mika-catch{margin:18px 0 12px;text-align:center;color:#213f43;font-size:1.12rem;font-weight:800}
+    .mika-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:66px;padding:14px 18px;border-radius:999px;background:linear-gradient(135deg,#31bcb5,#188b87);color:#fff;font-size:1.14rem;font-weight:800;line-height:1.4;text-decoration:none;box-shadow:0 10px 24px rgba(24,139,135,.27)}
+    .mika-button:hover,.mika-button:focus-visible{transform:translateY(-2px);outline:3px solid rgba(89,199,194,.3);outline-offset:3px}
+    @media(max-width:560px){.mika-promo{padding:20px 16px}.mika-promo-top{gap:12px;align-items:flex-start}.mika-photo{width:92px;height:92px;flex-basis:92px}.mika-bubble{padding:15px 16px}.mika-bubble:before{top:30px}.mika-title{font-size:1.18rem}.mika-copy,.mika-name{font-size:1rem}.mika-catch{font-size:1.05rem}.mika-button{min-height:68px;font-size:1.08rem}}
+    @media(max-width:390px){.mika-promo-top{display:block}.mika-photo{display:block;margin:0 auto 14px;width:108px;height:108px}.mika-bubble:before{display:none}.mika-bubble{text-align:center}}
+  </style>
 </head>
 <body>
   <header class="app-header">
@@ -64,10 +79,17 @@
         <div class="cards" id="resultCards" aria-live="polite"></div>
         <div class="empty-state" id="emptyState" hidden><span>🔎</span><h3>該当するサンプルがありませんでした</h3><p>条件を変えて、もう一度探してみてください。</p></div>
 
-        <aside class="open-chat-cta" aria-labelledby="openChatTitle">
-          <p class="open-chat-lead" id="openChatTitle">もっと「お金・節約・株主優待」の情報を知りたい方へ🌱</p>
-          <p class="open-chat-copy">マネーアドバイザー美香の<br>オープンチャットで最新情報をお届けしています。</p>
-          <a class="open-chat-button" href="https://line.me/ti/g2/G6a7e1zqDhCXhE82QJnI8MFO4154lVXbB_021g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer">無料オープンチャットに参加する</a>
+        <aside class="mika-promo" aria-labelledby="mikaPromoTitle">
+          <div class="mika-promo-top">
+            <img class="mika-photo" src="https://avatars.githubusercontent.com/u/317296845?v=4" alt="マネーアドバイザー美香">
+            <div class="mika-bubble">
+              <p class="mika-title" id="mikaPromoTitle">お金のこと、<br>一緒に楽しく学びませんか？🌱</p>
+              <p class="mika-copy">株主優待・AI・節約・デジタル資産など<br>初心者さんにもわかりやすく<br>お伝えしています✨</p>
+              <span class="mika-name">マネーアドバイザー美香</span>
+            </div>
+          </div>
+          <p class="mika-catch">スマホひとつで📱叶えられる未来✨💰</p>
+          <a class="mika-button" href="https://line.me/ti/g2/G6a7e1zqDhCXhE82QJnI8MFO4154lVXbB_021g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer" aria-label="LINEオープンチャットに参加する">オープンチャットに参加する📱✨</a>
         </aside>
 
         <button class="primary-button" type="button" data-action="home">条件を変えて探す</button>
